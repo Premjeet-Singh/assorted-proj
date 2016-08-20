@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+body{
+    background: forestgreen;
+}
+section{
+    width: 600px;
+    height: 330px;
+    padding: 20px;
+    margin: 100px auto;
+    background-color: lightgreen;
+    border: #234 2px solid;
+}
+
+#b1{
+    margin-left: 43px;
+    width: 163px;
+    height: 40px;
+    border: #567 2px solid;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#b2{
+    margin-left: 8px;
+    width: 163px;
+    height: 40px;
+    border: #567 2px solid;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#b3{
+    margin-left: 8px;
+    width: 163px;
+    height: 40px;
+    border: #567 2px solid;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+h1, h2, h3{
+    padding: 5px;
+    margin: 20px auto;
+    width: 500px;
+    height: 50px;
+    border: #567 2px solid;
+    text-align: center;
+    line-height: 45px;
+    background-color: darkseagreen;
+    border-radius: 8px;
+}
+
+#dialogoverlay{
+	display: none;
+	opacity: .8;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background: #FFF;
+	width: 100%;
+	z-index: 10;
+}
+#dialogbox{
+	display: none;
+	position: fixed;
+	background: #000;
+	border-radius:7px; 
+	width:550px;
+	z-index: 10;
+}
+#dialogbox > div{ background:#FFF; margin:8px; }
+#dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC; }
+#dialogbox > div > #dialogboxbody{ background:#333; padding:20px; color:#FFF; }
+#dialogbox > div > #dialogboxfoot{ background: #666; padding:10px; text-align:right; }
+</style>
+<script>
+var Alert = new CustomAlert();
+function CustomAlert(){
+    this.render = function(dialog){
+        var winW = window.innerWidth;
+        var winH = window.innerHeight;
+        var dialogoverlay = document.getElementById('dialogoverlay');
+        var dialogbox = document.getElementById('dialogbox');
+        dialogoverlay.style.display = "block";
+        dialogoverlay.style.height = winH+"px";
+        dialogbox.style.left = (winW/2) - (550 * .5)+"px";
+        dialogbox.style.top = "100px";
+        dialogbox.style.display = "block";
+        document.getElementById('dialogboxhead').innerHTML = "Acknowledge This Message";
+        document.getElementById('dialogboxbody').innerHTML = dialog;
+        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Alert.ok()">OK</button>';
+    }
+	this.ok = function(){
+		document.getElementById('dialogbox').style.display = "none";
+		document.getElementById('dialogoverlay').style.display = "none";
+	}
+}
+
+</script>
+</head>
+<body>
+    <section>
+        <div id="dialogoverlay"></div>
+        <div id="dialogbox">
+          <div>
+            <div id="dialogboxhead"></div>
+            <div id="dialogboxbody"></div>
+            <div id="dialogboxfoot"></div>
+          </div>
+        </div>
+        <h1>Content in heading h1...</h1>
+        <h2>Content in heading h2...</h2>
+        <button id="b1" onclick="alert('This is Default Alert box.')">Default Alert</button>
+        <button id="b2" onclick="Alert.render('This is Custom Alert box.')">Custom Alert</button>
+        <button id="b3" onclick="Alert.render('This is another Custom Alert box.')">Custom Alert 2</button>
+        <h3>Content in heading h3...</h3>
+    </section>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Button Animation</title>
+</head>
+<style>
+
+*{
+	padding: 0;
+	margin: 0;
+}
+
+#wrap{
+	width: 500px;
+	height: 380px;
+	padding: 30px;
+	margin: 35px auto;
+	background: lightgreen;
+	border: 5px #5a7 solid;
+	overflow: hidden;
+}
+
+#box {
+	padding: 6px;
+	margin: 15px 10px;
+	background: #9DCEFF;
+	width: 460px;
+	height: 180px;
+	font-size: 22px;
+	overflow: hidden;
+	position: relative;
+}
+
+.btnContainer{
+	width: 450px;
+	height: 130px;
+	background: darkseagreen;
+	padding: 8px;
+	margin: 10px auto;
+	border: green 3px solid;
+}
+
+button{
+	padding: 5px;
+	margin: 5px 3px;
+	width: 140px;
+	height: 35px;
+	font-size: 13px;
+	font-family: "Arial" sans-serif;
+	font-weight: bold;
+	border-bottom-left-radius: 15px;
+	border-top-right-radius: 15px;
+	background: mediumturquoise;
+	overflow: hidden;
+}
+</style>
+<script>
+function changeBG(el,clr){
+	var elem = document.getElementById(el);
+	elem.style.transition = "background 1.0s linear 0s";
+	elem.style.background = clr;
+}
+
+function fadeOut(el){
+	var elem = document.getElementById(el);
+	elem.style.transition = "opacity 0.5s linear 0s";
+	elem.style.opacity = 0;
+}
+function fadeIn(el){
+	var elem = document.getElementById(el);
+	elem.style.transition = "opacity 0.5s linear 0s";
+	elem.style.opacity = 1;
+}
+
+function slideOpen(el){
+	var elem = document.getElementById(el);
+	elem.style.transition = "height 0.5s linear 0s";
+	elem.style.height = "180px";
+}
+function slideClosed(el){
+	var elem = document.getElementById(el);
+	elem.style.transition = "height 0.5s linear 0s";
+	elem.style.height = "0px";
+}
+
+function slideIn(el){
+	var elem = document.getElementById(el);
+	elem.style.transition = "left 0.5s ease-in 0s";
+	elem.style.left = "0px";
+}
+function slideOut(el){
+	var elem = document.getElementById(el);
+	elem.style.transition = "left 0.5s ease-out 0s";
+	elem.style.left = "-1000px";
+}
+
+</script>
+<body>
+<div id="wrap">
+	<div class="btnContainer">
+		<button onclick="changeBG('box','#9DCEFF')">Origninal</button>
+		<button onclick="changeBG('box','#F0F')">Magenta</button>
+		<button onclick="changeBG('box','#0C0')">Green</button>
+		<button onclick="fadeOut('box');">Fade out</button>
+		<button onclick="fadeIn('box');">Fade In</button>
+		<button onclick="slideClosed('box');">Slide Closed</button>
+		<button onclick="slideOpen('box');">Slide Open</button>
+		<button onclick="slideIn('box');">Slide In</button>
+		<button onclick="slideOut('box');">Slide Out</button>
+	</div>
+	<div id="box">Box container for text...</div>
+</div>
+</body>
+</html>

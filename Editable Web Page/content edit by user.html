@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Content Edit by User</title>
+</head><script>
+function makeEditable(div){
+    div.style.border = "1px solid #000";
+    div.style.padding = "20px";
+    div.style.background = "lightyellow";
+    div.contentEditable = true;
+}
+function makeReadOnly(div){
+    div.style.border = "none";
+    div.style.padding = "0px";
+    div.style.background = "";
+    div.contentEditable = false;
+    // alert("Run Ajax POST request here to save the div.innerHTML \
+    // or div.textContent to the database.");
+    alert("Content Edited Successfully! !")
+}
+</script>
+<style>
+		*{
+		padding: 0;
+		margin: 0;
+	}
+	body{
+		background-color: lightgray;
+	}
+	section{
+		width: 500px;
+		min-height: 350px;
+		height: auto;
+		padding: 10px;
+		margin: 80px auto;
+		background-color: darkcyan;
+		border: #274 3px solid;
+	}
+
+h2{
+	width: 470px;
+	height: 50px;
+	padding: 0px;
+	margin: 20px auto;
+	background-color: lightskyblue;
+	text-align: center;
+	line-height: 2;
+	border: #274 2px solid;
+}
+div{
+	width: 430px;
+	margin: 10px auto;
+	font-size: 20px;
+	overflow: hidden;
+	/*background-color: lightyellow;*/
+}
+
+</style>
+
+<body>
+	<section>
+		<h2>This is a Editable web page</h2>
+		<div onclick="makeEditable(this)" onblur="makeReadOnly(this)">
+		  div containing content to be managed by the user...
+		</div>
+	</section>
+</body>
+</html>
+
